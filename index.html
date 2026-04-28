@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Tôi là Developer</title>
+    <style>
+        * {
+            margin: 5;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-bottom: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            border: 4px solid #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-info {
+            margin-bottom: 2rem;
+        }
+
+        .profile-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        .profile-info strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            background: white;
+            margin: 5rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .certificates-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+            min-width: 30px;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .profile-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#projects">Dự án</a></li>
+                    <li><a href="#certificates">Chứng chỉ</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="profile-card">
+            <div class="profile-image">👨‍💻</div>
+            <h1>Hoàng Đạo Duy Đạt</h1>
+            <div class="profile-info">
+                <p><strong>Khóa: </strong>49    <strong>Lớp:</strong> CNTT.C </p>
+                <p><strong>Trường:</strong> Đại học Sư phạm Thành phố Hồ Chí Minh</p>
+                <p><strong>Chuyên ngành:</strong> Full Stack AI Engineering</p>
+            </div>
+            <p>Sinh viên đam mê lập trình, luôn tìm tòi công nghệ mới và giải quyết các bài toán thú vị.</p>
+            <a href="#contact" class="cta-button">Liên hệ tôi</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2>Giới thiệu</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Tôi là một sinh viên Kỹ thuật Trí tuệ Nhân tạo & Machine Learning với nền tảng IT vững chắc. 
+                    Tôi đam mê ứng dụng AI vào các bài toán thực tế, đặc biệt là trong lĩnh vực y tế.
+                </p>
+                <p>
+                    Với khả năng tự học mạnh mẽ, tôi liên tục khám phá các công nghệ AI mới như Deep Learning, NLP, và Computer Vision. 
+                    Tôi tin rằng AI sẽ thay đổi thế giới, và tôi muốn trở thành một phần của sự thay đổi đó.
+                </p>
+            </div>
+            <div>
+                <p><strong>Các kỹ năng chính:</strong></p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Data Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Dự án</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🏥</div>
+                <div class="project-content">
+                    <h3>CNV Detection từ OCT Images</h3>
+                    <p>Mô hình Deep Learning phát hiện bệnh lý võng mạc từ hình ảnh OCT. Ứng dụng AI vào chẩn đoán y tế.</p>
+                    <div class="project-tags">
+                        <span class="tag">CNN</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Medical AI</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section id="certificates" class="container">
+        <h2>Chứng chỉ</h2>
+        <div class="certificates-list">
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/ffb9ff4d3e3410ba82622491666ced620c05e970d6670ddcd544fe5c7b73de0a?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">📐</div>
+                <h3>Advanced NLP with Python for Machine Learning</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> NLP fundamentals, spaCy, Transformer models (GPT, BERT), Fine-tuning (SFT, PEFT), RAG, Sentiment analysis</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/707bccf62e3e07042cc7b8f8754768f165450bcf96af25c74a28633d851e54c3?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">🤖</div>
+                <h3>Artificial Intelligence Foundations: Machine Learning</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> ML lifecycle, Supervised learning, Unsupervised learning, Reinforcement learning, Model evaluation, ML pipeline</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/66bc486eb59ec0df35b0d432ea8c50a07d46c458c1c87b50232f5abf1dc021d7?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">📊</div>
+                <h3>Machine Learning with Python: Foundations</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> ML basics, Data preparation, Model building, Model evaluation, Python for ML</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/d39b80257f627b221a336d5e57fa09386bae4093e25e59168cd7b33a4503e7bb?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">📈</div>
+                <h3>Machine Learning Foundations: Statistics</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> Statistical analysis, Correlation, Probability distributions, Standard error, Bootstrapping</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/81c02ab712579147add121c4a542697f678a216748f0bbc89cfece7341db9bca?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">💱</div>
+                <h3>Machine Learning Foundations: Calculus</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> Derivatives, Integrals, Multivariate calculus, Optimization in ML</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/5e8dfdcee390d2dbc2115bb3568a31e067ed963309cd455878831e6f55702e1c?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">⚡</div>
+                <h3>Applied Machine Learning: Foundations</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> End-to-end ML system, Data processing, Model tuning, Model deployment, MLflow</p>
+            </a>
+
+            <a class="certificate-card" href="https://www.linkedin.com/learning/certificates/c944c63030d9f497acab5e9a7f2e39108af8c3601c90f16d4dce72d4aec54d74?trk=share_certificate" target="_blank">
+                <div class="certificate-icon">⚙️</div>
+                <h3>Full-Stack Deep Learning with Python</h3>
+                <p>LinkedIn Learning</p>
+                <p style="font-size: 0.75rem; margin-top: 0.8rem; line-height: 1.4;"><strong>Kỹ năng:</strong> Full ML lifecycle, MLOps, MLflow, Optuna, Deployment, Scalable ML systems</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Liên hệ</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Kết nối với tôi</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <p><strong>Email:</strong> hoangdaoduydat@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🐙</span>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/DuyDat141" target="_blank" style="color: #667eea; text-decoration: none;">github.com/DuyDat141</a></p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💼</span>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ho%C3%A0ng-%C4%91%E1%BA%A1o-duy-%C4%91%E1%BA%A1t-5b5865401" target="_blank" style="color: #667eea; text-decoration: none;">linkedin.com/in/hoangdaoduydat</a></p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <p><strong>Địa chỉ:</strong> TP Hồ Chí Minh, Việt Nam</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Gửi tin nhắn cho tôi</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Tên của bạn</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Chủ đề</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tin nhắn</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Portfolio. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            console.log({
+                name,
+                email,
+                subject,
+                message
+            });
+
+            alert('Cảm ơn bạn đã gửi tin nhắn! Tôi sẽ liên lạc với bạn sớm.');
+            event.target.reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
